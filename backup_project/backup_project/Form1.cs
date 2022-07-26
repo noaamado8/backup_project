@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
+
 namespace backup_project
 {
     public partial class Form1 : Form
     {
         public string projectTitle = "Backup Project";
-        public string projectBuild = "v.0.1";
-        public string projectDate = "25/07/2022";
+        public string projectBuild = "v.0.2";
+        public string projectDate = "26/07/2022";
 
         public Form1()
         {
@@ -27,6 +28,25 @@ namespace backup_project
         string destination = "";
 
 
+        public void newName(string name)
+        {
+
+        
+
+            if (source.Length > 0)
+            {
+                textBox1.Text = name;
+                label5.Text = name;
+            }
+
+            if (checkBox1.Checked)
+            {
+                label5.Text +="_"+ date;
+            }
+
+        }
+
+
 
 
         private void button4_Click(object sender, EventArgs e)
@@ -34,6 +54,13 @@ namespace backup_project
 
             source = selectPath();
             label1.Text = source;
+
+            string[] folders = source.Split('\\');
+            string foldername = folders[folders.Length - 1];
+           string newfoldername = foldername + "_copy";
+            
+            newName(newfoldername);
+
 
         }
 
@@ -59,17 +86,31 @@ namespace backup_project
 
 
         }
+        string date = DateTime.Now.ToString("yyyy-MM-dd");
 
 
         private void button1_Click(object sender, EventArgs e)
         {
 
         
+            string customName = textBox1.Text;
+            string destination1;
+            if (customName.Length > 0)
+            {
 
-            //string source1 = source;
+                 destination1 = destination + "\\" + customName;
 
-            string date = DateTime.Now.ToString("yyyy-MM-dd");
-            string destination1 = destination + "\\" + date;
+                if (checkBox1.Checked)
+                {
+                    destination1 += "_" + date;
+                }
+            }
+            else
+            {
+                 destination1 = destination + "\\" + date;
+            }
+
+
 
             Directory.CreateDirectory(destination1);
 
@@ -95,13 +136,17 @@ namespace backup_project
 
             StreamWriter log= new StreamWriter(destination1 + "\\log.txt");
 
-            log.WriteLine("Iago&Noa. ~#Periko");
 
+            log.WriteLine("#Software: Windows C# project to performance data backups");
+            log.WriteLine("#Version: "+projectBuild);
+            log.WriteLine("#Date: "+ DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+
+            //      label4.Text = "0/" + counter.ToString();
+
+            
             createBackup(source, destination1, progressBar1, log);
 
         }
-
-
 
 
         static bool copied = false;
@@ -110,11 +155,12 @@ namespace backup_project
 
         static int counter = 0;
         static int progress = 0;
+       
 
-        static void createBackup(string source, string destination, ProgressBar progressbar, StreamWriter log)
+        public void createBackup(string source, string destination, ProgressBar progressbar, StreamWriter log)
         {
-
-
+            
+            
             var sourceDir = new DirectoryInfo(source);
 
             DirectoryInfo[] allDirs = sourceDir.GetDirectories();
@@ -127,10 +173,6 @@ namespace backup_project
             {
                 directory = false;
             }
-
-         
-
-
             foreach (FileInfo file in sourceDir.GetFiles())
             {
                 string destinationPath = Path.Combine(destination, file.Name);
@@ -144,14 +186,9 @@ namespace backup_project
                 progress++;
                       
                 progressbar.Value = progress;
-
-                              
-
+              //  label4.Text = progress.ToString() + "/" + counter.ToString();
 
             }
-
-
-
 
 
 
@@ -167,17 +204,11 @@ namespace backup_project
                 progress++;
 
                 progressbar.Value = progress;
+               // label4.Text = progress.ToString() + "/" + counter.ToString();
                 createBackup(subDir.FullName, newDestination, progressbar, log);
 
-              
-
-
-
-
+            
             }
-
-
-
 
             if (!copied)
             {
@@ -188,7 +219,6 @@ namespace backup_project
 
                
             }
-
 
 
         }
@@ -225,6 +255,40 @@ namespace backup_project
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            newName(textBox1.Text);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            newName(textBox1.Text);
+
+
+
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
