@@ -1,0 +1,9 @@
+c:\users\iago&noa\documents\visual studio 2015\Projects\backup_project\backup_project\bin\Debug\backup_project.exe.config
+c:\users\iago&noa\documents\visual studio 2015\Projects\backup_project\backup_project\bin\Debug\backup_project.exe
+c:\users\iago&noa\documents\visual studio 2015\Projects\backup_project\backup_project\bin\Debug\backup_project.pdb
+c:\users\iago&noa\documents\visual studio 2015\Projects\backup_project\backup_project\obj\Debug\backup_project.csprojResolveAssemblyReference.cache
+c:\users\iago&noa\documents\visual studio 2015\Projects\backup_project\backup_project\obj\Debug\backup_project.Form1.resources
+c:\users\iago&noa\documents\visual studio 2015\Projects\backup_project\backup_project\obj\Debug\backup_project.Properties.Resources.resources
+c:\users\iago&noa\documents\visual studio 2015\Projects\backup_project\backup_project\obj\Debug\backup_project.csproj.GenerateResource.Cache
+c:\users\iago&noa\documents\visual studio 2015\Projects\backup_project\backup_project\obj\Debug\backup_project.exe
+c:\users\iago&noa\documents\visual studio 2015\Projects\backup_project\backup_project\obj\Debug\backup_project.pdb
